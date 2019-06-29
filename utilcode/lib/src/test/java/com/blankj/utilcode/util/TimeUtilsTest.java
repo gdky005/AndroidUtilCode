@@ -23,7 +23,7 @@ import static org.junit.Assert.assertTrue;
  *     desc  : test TimeUtils
  * </pre>
  */
-public class TimeUtilsTest extends BaseTest {
+public class TimeUtilsTest  {
 
     private final DateFormat defaultFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
     private final DateFormat mFormat       = new SimpleDateFormat("yyyy MM dd HH:mm:ss", Locale.getDefault());
@@ -42,24 +42,28 @@ public class TimeUtilsTest extends BaseTest {
     public void millis2String() {
         assertEquals(timeString, TimeUtils.millis2String(timeMillis));
         assertEquals(timeStringFormat, TimeUtils.millis2String(timeMillis, mFormat));
+        assertEquals(timeStringFormat, TimeUtils.millis2String(timeMillis, "yyyy MM dd HH:mm:ss"));
     }
 
     @Test
     public void string2Millis() {
         assertEquals(timeMillis, TimeUtils.string2Millis(timeString));
         assertEquals(timeMillis, TimeUtils.string2Millis(timeStringFormat, mFormat));
+        assertEquals(timeMillis, TimeUtils.string2Millis(timeStringFormat, "yyyy MM dd HH:mm:ss"));
     }
 
     @Test
     public void string2Date() {
         assertEquals(timeDate, TimeUtils.string2Date(timeString));
         assertEquals(timeDate, TimeUtils.string2Date(timeStringFormat, mFormat));
+        assertEquals(timeDate, TimeUtils.string2Date(timeStringFormat, "yyyy-MM-dd HH:mm:ss"));
     }
 
     @Test
     public void date2String() {
         assertEquals(timeString, TimeUtils.date2String(timeDate));
         assertEquals(timeStringFormat, TimeUtils.date2String(timeDate, mFormat));
+        assertEquals(timeStringFormat, TimeUtils.date2String(timeDate, "yyyy-MM-dd HH:mm:ss"));
     }
 
     @Test
